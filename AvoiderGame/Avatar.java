@@ -14,6 +14,12 @@ public class Avatar extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
-    }    
+        followMouse();
+    } 
+    private void followMouse() {
+        MouseInfo mi = Greenfoot.getMouseInfo();
+        if ( mi != null) {
+            setLocation(mi.getX(), mi.getY());
+        }
+    }
 }

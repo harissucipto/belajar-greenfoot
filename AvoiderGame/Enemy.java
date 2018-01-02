@@ -14,6 +14,17 @@ public class Enemy extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
+        setLocation(getX(), getY() + 1); // ketika musuh berhasil dibuat maka musuh bergerak terus turn 1 pixel ke bawah (y)
+        
+        // cek hapus dan menghapus apabila object telah keluar screen
+        checkRemove();
     }    
+    
+    public void checkRemove() {
+        World w = getWorld();
+        if ( getY() > w.getHeight() + 30) { // ketika object menyentuh scrren (+ 30 opsi karena object ditambahkan -30 pada world)
+            w.removeObject(this);
+        }
+    }
+        
 }
