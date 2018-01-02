@@ -37,7 +37,8 @@ public class AvoiderWorld extends World
    */
   public void act() {
       // Randomly add enimies to the world
-      if (Greenfoot.getRandomNumber(1000) < 20) { // berapa persen musuh keluar ke screen
+      // atau random spawan enmy
+      if (Greenfoot.getRandomNumber(1000) < 60) { // berapa persen musuh spwan keluar ke screen
           Enemy e = new Enemy();
           addObject(e, Greenfoot.getRandomNumber(getWidth() - 20) + 10, -30);
           
