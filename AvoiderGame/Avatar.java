@@ -28,8 +28,9 @@ public class Avatar extends Actor
     private void checkForCollisions() { // ketika actor bersentuhan dengan musuh
         Actor enemy = getOneIntersectingObject(Enemy.class);
         if (enemy != null) {
-            getWorld().removeObject(this);
-            Greenfoot.stop();
+            // panggil avoiderWorld untuk mengakhiri game
+            AvoiderWorld world = (AvoiderWorld) getWorld();
+            world.endGame();
         }
     }
 }

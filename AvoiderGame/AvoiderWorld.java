@@ -43,5 +43,9 @@ public class AvoiderWorld extends World
           
       }
   }
+  public void endGame() {
+      AvoiderGameOverWorld go = new AvoiderGameOverWorld();
+      Greenfoot.setWorld(go);
+  }
     
 }
