@@ -14,10 +14,13 @@ public class Enemy extends Actor
      */
     public void act() 
     {
-        setLocation(getX(), getY() + 5); // ketika musuh berhasil dibuat maka musuh bergerak terus turn n + pixel ke bawah (y)
+        setLocation(getX(), getY() + 2); // ketika musuh berhasil dibuat maka musuh bergerak terus turn n + pixel ke bawah (y)
+        
+        turn(10); // seberapa cepat actor berputar
         
         // cek hapus dan menghapus apabila object telah keluar screen
         checkRemove();
+        
     }    
     
     public void checkRemove() {
