@@ -8,16 +8,24 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class AvoiderWorld extends World
 {
+    private GreenfootSound bkgMusic; // bikin variable agar dapat diakses semua method
 
     /**
      * Constructor for objects of class AvoiderWorld.
      * 
      */
     public AvoiderWorld()
-    {    
+    {   
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         // set flase when world is unbounding (kondisi dimana actor bisa melewati pembatas screen)
         super(600, 400, 1, false); 
+        prepare();
+        
+        // Initilize the music
+        bkgMusic = new GreenfootSound("sounds/urban-jungle-looping.mp3");
+        // Music credit: http://soundimage.org/sci-fi/
+        bkgMusic.playLoop(); // Play the music
+        
         prepare();
     }
 
@@ -44,6 +52,7 @@ public class AvoiderWorld extends World
       }
   }
   public void endGame() {
+      bkgMusic.stop();
       AvoiderGameOverWorld go = new AvoiderGameOverWorld();
       Greenfoot.setWorld(go);
   }
