@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class AvoiderWorld extends World
 {
     private GreenfootSound bkgMusic; // bikin variable agar dapat diakses semua method
+    private Counter scoreBoard; // varaible untuk counter score
 
     /**
      * Constructor for objects of class AvoiderWorld.
@@ -36,6 +37,8 @@ public class AvoiderWorld extends World
     {
         Avatar avatar = new Avatar();
         addObject(avatar,301,204);
+        scoreBoard = new Counter("Score: ");
+        addObject(scoreBoard, 70, 20);
     }
     
     /**
@@ -47,6 +50,7 @@ public class AvoiderWorld extends World
       if (Greenfoot.getRandomNumber(1000) < 20) { // berapa persen musuh keluar ke screen
           Enemy e = new Enemy();
           addObject(e, Greenfoot.getRandomNumber(getWidth() - 20) + 10, -30);
+          
           
       }
   }
