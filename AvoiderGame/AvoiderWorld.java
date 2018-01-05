@@ -10,7 +10,10 @@ public class AvoiderWorld extends World
 {
     private GreenfootSound bkgMusic; // bikin variable agar dapat diakses semua method
     private Counter scoreBoard; // varaible untuk counter score
-
+    private int enemySpawanRate = 20;
+    private int enemySpeed = 1;
+    private int nextLevel = 100;
+    
     /**
      * Constructor for objects of class AvoiderWorld.
      * 
@@ -47,18 +50,32 @@ public class AvoiderWorld extends World
    */
   public void act() {
       // Randomly add enimies to the world
-      if (Greenfoot.getRandomNumber(1000) < 20) { // berapa persen musuh keluar ke screen
+      if (Greenfoot.getRandomNumber(1000) < enemySpawanRate) { // berapa persen musuh keluar ke screen
           Enemy e = new Enemy();
+          e.setSpeed(enemySpeed);
           addObject(e, Greenfoot.getRandomNumber(getWidth() - 20) + 10, -30);
           // Give us some points for facing yet another enemy
           scoreBoard.setValue(scoreBoard.getValue() + 1);
           
       }
+      increaseLevel();
   }
+  
+  private void increaseLevel() {
+      int score = scoreBoard.getValue();
+      
+      if (score > nextLevel) {
+          enemySpawanRate += 2;
+          enemySpeed++;
+          nextLevel += 100;
+      }
+  }
+  
   public void endGame() {
       bkgMusic.stop();
       AvoiderGameOverWorld go = new AvoiderGameOverWorld();
       Greenfoot.setWorld(go);
   }
+
     
 }
