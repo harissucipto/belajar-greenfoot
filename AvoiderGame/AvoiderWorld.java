@@ -50,7 +50,8 @@ public class AvoiderWorld extends World
       if (Greenfoot.getRandomNumber(1000) < 20) { // berapa persen musuh keluar ke screen
           Enemy e = new Enemy();
           addObject(e, Greenfoot.getRandomNumber(getWidth() - 20) + 10, -30);
-          
+          // Give us some points for facing yet another enemy
+          scoreBoard.setValue(scoreBoard.getValue() + 1);
           
       }
   }
