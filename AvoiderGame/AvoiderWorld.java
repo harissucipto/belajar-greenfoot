@@ -29,7 +29,9 @@ public class AvoiderWorld extends World
         // Music credit: http://soundimage.org/sci-fi/
         bkgMusic.playLoop(); // Play the music
         
+        setPaintOrder(Avatar.class, Enemy.class, Counter.class);
         prepare();
+        generateInitialStarField();
     }
 
     /**
@@ -52,7 +54,7 @@ public class AvoiderWorld extends World
       // Randomly add enimies to the world
       generateEnemies();
       
-      generateStars();
+      generateStars(-1);
       
       increaseLevel();
   }
@@ -68,10 +70,36 @@ public class AvoiderWorld extends World
       }
   }
   
-  private void generateStars() {
+  private void generateStars(int yLoc) {
       if (Greenfoot.getRandomNumber(1000) < 350) {
           Star s = new Star();
-          addObject(s, Greenfoot.getRandomNumber(getWidth() -20) + 10, -1);
+          GreenfootImage image = s.getImage();
+          
+          if (Greenfoot.getRandomNumber(1000) < 300) {
+              // this is a close bright star
+              s.setSpeed(3);
+              image.setTransparency(
+                Greenfoot.getRandomNumber(25) + 225
+              );
+              image.scale(4, 4);
+              
+           } else {
+              // this is a further dim star
+              s.setSpeed(2);
+              image.setTransparency(
+                Greenfoot.getRandomNumber(50) + 100
+              );
+              image.scale(2, 2);
+               
+            }
+          s.setImage(image);
+          addObject(s, Greenfoot.getRandomNumber(getWidth() -20) + 10, yLoc);
+      }
+  }
+  
+  private void generateInitialStarField() {
+      for (int i = 0; i < getHeight(); i++) {
+          generateStars(i);
       }
   }
   

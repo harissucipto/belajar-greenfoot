@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Sat Jan 06 09:54:38 WIB 2018
+#Sat Jan 06 10:37:30 WIB 2018
 target4.type=ClassTarget
 dependency3.from=AvoiderWorld
 target3.height=50
@@ -53,7 +53,7 @@ target6.height=50
 dependency7.to=Enemy
 dependency6.from=AvoiderGameIntroScreen
 package.numTargets=6
-class.AvoiderWorld.image=space1.jpg
+class.AvoiderWorld.image=starBg.png
 dependency8.to=AvoiderWorld
 dependency6.type=UsesDependency
 target1.type=ClassTarget
