@@ -51,6 +51,9 @@ public class AvoiderWorld extends World
   public void act() {
       // Randomly add enimies to the world
       generateEnemies();
+      
+      generateStars();
+      
       increaseLevel();
   }
   
@@ -62,6 +65,13 @@ public class AvoiderWorld extends World
           // Give us some points for facing yet another enemy
           scoreBoard.setValue(scoreBoard.getValue() + 1);
           
+      }
+  }
+  
+  private void generateStars() {
+      if (Greenfoot.getRandomNumber(1000) < 350) {
+          Star s = new Star();
+          addObject(s, Greenfoot.getRandomNumber(getWidth() -20) + 10, -1);
       }
   }
   
