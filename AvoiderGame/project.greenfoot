@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Sat Jan 06 09:33:42 WIB 2018
+#Sat Jan 06 09:54:38 WIB 2018
 target4.type=ClassTarget
 dependency3.from=AvoiderWorld
 target3.height=50
@@ -53,7 +53,6 @@ target6.height=50
 dependency7.to=Enemy
 dependency6.from=AvoiderGameIntroScreen
 package.numTargets=6
-class.t.image=smiley5.png
 class.AvoiderWorld.image=space1.jpg
 dependency8.to=AvoiderWorld
 dependency6.type=UsesDependency
@@ -74,6 +73,7 @@ dependency7.from=Avatar
 class.AvoiderWorld.superclass=greenfoot.World
 target3.y=0
 target3.x=0
+class.Star.superclass=greenfoot.Actor
 dependency7.type=UsesDependency
 target2.type=ClassTarget
 target2.y=0
@@ -98,7 +98,6 @@ target3.type=ClassTarget
 target4.width=180
 dependency2.from=AvoiderWorld
 dependency2.type=UsesDependency
-class.t.superclass=greenfoot.Actor
 target5.typeParameters=
 world.lastInstantiated=AvoiderGameIntroScreen
 target2.showInterface=false
