@@ -29,7 +29,7 @@ public class AvoiderWorld extends World
         // Music credit: http://soundimage.org/sci-fi/
         bkgMusic.playLoop(); // Play the music
         
-        setPaintOrder(Avatar.class, Enemy.class, Counter.class);
+        setPaintOrder(Eye.class, Avatar.class, Enemy.class, Counter.class);
         prepare();
         generateInitialStarField();
     }
@@ -41,7 +41,7 @@ public class AvoiderWorld extends World
     private void prepare()
     {
         Avatar avatar = new Avatar();
-        addObject(avatar,301,204);
+        addObject(avatar,287,232);
         scoreBoard = new Counter("Score: ");
         addObject(scoreBoard, 70, 20);
     }

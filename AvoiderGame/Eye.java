@@ -34,7 +34,7 @@ public class Eye extends Actor
                     drawEye(1, 3);
                 }
             } else {
-                if ( e.getY() < e.getY() ) {
+                if ( e.getY() < getY() ) {
                     drawEye(3, 1);
                 } else {
                     drawEye(3, 3);
