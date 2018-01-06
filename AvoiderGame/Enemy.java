@@ -10,6 +10,7 @@ public class Enemy extends Actor
 
 {
     private int speed;
+    private int timeToChange = 1;
     
     /**
      * Act - do whatever the Enemy wants to do. This method is called whenever
@@ -18,6 +19,7 @@ public class Enemy extends Actor
     public void act() 
     {
         setLocation(getX(), getY() + speed); // ketika musuh berhasil dibuat maka musuh bergerak terus turn 1 pixel ke bawah (y)
+        changeDisposition(); // mengubah set image
         
         // cek hapus dan menghapus apabila object telah keluar screen
         checkRemove();
@@ -32,6 +34,28 @@ public class Enemy extends Actor
     
     public void setSpeed(int s) {
         speed = s;
+    }
+    
+    private void changeDisposition() {
+        int ypos = getY();
+        int worldHeight = getWorld().getHeight();
+        int marker1 = (int) (worldHeight * 0.5);
+        int marker2 = (int) (worldHeight * 0.75);
+        int marker3 = (int) (worldHeight * 0.90);
+        
+        if ( timeToChange == 1 && ypos > marker1) {
+            setImage("smiley4.png");
+            timeToChange++;
+        }
+        else if (timeToChange == 2 && ypos > marker2) {
+            setImage("smiley3.png");
+            timeToChange++;
+        }
+        else if (timeToChange == 3 && ypos > marker3) {
+            setImage("smiley5.png");
+            timeToChange++;
+        }
+        
     }
         
 }
