@@ -8,6 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Avatar extends Actor
 {
+    private int health = 3;
+    private int hitDelay = 0;
+    private int nextImage = 0;
+    
     /**
      * Act - do whatever the Avatar wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -26,11 +30,18 @@ public class Avatar extends Actor
     }
     
     private void checkForCollisions() { // ketika actor bersentuhan dengan musuh
-        Actor enemy = getOneIntersectingObject(Enemy.class);
-        if (enemy != null) {
-            // panggil avoiderWorld untuk mengakhiri game
-            AvoiderWorld world = (AvoiderWorld) getWorld();
-            world.endGame();
-        }
+       Actor enemy = getOneIntersectingObject(Enemy.class);
+       if ( hitDelay == 0 && enemy != null) {
+           if (health == 0) {
+               AvoiderWorld world = (AvoiderWorld) getWorld();
+               world.endGame();
+           } else {
+               health--;
+               setImage("skull" + ++nextImage + ".png");
+               hitDelay = 50;
+           }
+       }
+       
+       if ( hitDelay > 0 ) hitDelay--;
     }
 }

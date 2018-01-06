@@ -28,6 +28,7 @@ public class Star extends Actor
 
         setLocation(getX() , getY() + speed);
         checkRemove();
+        checkTwinkle();
     }
     
     private void checkRemove() {
