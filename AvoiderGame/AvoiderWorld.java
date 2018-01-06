@@ -50,6 +50,11 @@ public class AvoiderWorld extends World
    */
   public void act() {
       // Randomly add enimies to the world
+      generateEnemies();
+      increaseLevel();
+  }
+  
+  private void generateEnemies() {
       if (Greenfoot.getRandomNumber(1000) < enemySpawanRate) { // berapa persen musuh keluar ke screen
           Enemy e = new Enemy();
           e.setSpeed(enemySpeed);
@@ -58,7 +63,6 @@ public class AvoiderWorld extends World
           scoreBoard.setValue(scoreBoard.getValue() + 1);
           
       }
-      increaseLevel();
   }
   
   private void increaseLevel() {
