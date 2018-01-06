@@ -10,4 +10,6 @@ comment3.params=
 comment3.target=void\ checkRemove()
 comment4.params=s
 comment4.target=void\ setSpeed(int)
-numComments=5
+comment5.params=
+comment5.target=void\ checkTwinkle()
+numComments=6

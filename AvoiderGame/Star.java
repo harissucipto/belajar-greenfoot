@@ -9,6 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Star extends Actor
 {
     int speed = 1;
+    int twinkleTime = 0;
+    int currentTransparency = 0;
     
     // constructor class
     public Star() {
@@ -42,5 +44,21 @@ public class Star extends Actor
     
     public void setSpeed( int s ) {
         speed = s;
+    }
+    
+    public void checkTwinkle() {
+        GreenfootImage img = getImage();
+        if ( twinkleTime > 0 ) {
+            if ( twinkleTime == 1 ) {
+                img.setTransparency(currentTransparency);
+            }
+            twinkleTime--;
+        } else {
+            if ( Greenfoot.getRandomNumber(10000) < 10 ) {
+                twinkleTime = 10;
+                currentTransparency = img.getTransparency();
+                img.setTransparency(0);
+            }
+        }
     }
 }
