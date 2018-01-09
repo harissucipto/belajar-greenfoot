@@ -14,6 +14,9 @@ public class Avatar extends Actor
     private Eye leftEye;
     private Eye rightEye;
     
+    private int stunDelay = -1;
+    private int lagDelay = -1;
+    
     
     
     /**
@@ -27,11 +30,25 @@ public class Avatar extends Actor
     } 
     
     private void followMouse() {
+        
         MouseInfo mi = Greenfoot.getMouseInfo();
-        if ( mi != null) {
-            setLocation(mi.getX(), mi.getY());
-            leftEye.setLocation(getX() - 10, getY() - 8);
-            rightEye.setLocation(getX() + 10, getY() - 8);
+        if ( stunDelay < 0 ) {
+            if ( mi != null ) {
+                if ( lagDelay > 0 ) {
+                    int stepX = (mi.getX() - getX()) / 40;
+                    int stepY = (mi.getY() - getY()) / 40;
+                    setLocation(stepX + getX(), stepY + getY());
+                    --lagDelay;
+                } else {
+                    setLocation(mi.getX(), mi.getY());
+                }
+               
+                leftEye.setLocation(getX() - 10, getY() -8);
+                rightEye.setLocation(getX() + 10, getY() - 8);
+            }
+        } else {
+            stunDelay--;
+       
         }
     }
     
@@ -58,5 +75,25 @@ public class Avatar extends Actor
        
         w.addObject(leftEye, getX() - 10, getY() - 8);
         w.addObject(rightEye, getX() + 10, getY() - 8);
+    }
+    
+    public void stun() {
+        stunDelay = 50;
+    }
+    
+    
+    public void addHealth() {
+        if ( health < 3 ) {
+            health++;
+            if ( --nextImage == 0 ) {
+                setImage("skull.png");
+            } else {
+                setImage("skull" + nextImage + ".png");
+            }
+        }
+    }
+    
+    public void lagControls() {
+        lagDelay = 150;
     }
 }

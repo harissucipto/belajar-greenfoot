@@ -14,6 +14,10 @@ public class AvoiderWorld extends World
     private int enemySpeed = 1;
     private int nextLevel = 100;
     
+    private int cupcakeFrequency = 10;
+    private int cloverFrequency = 10;
+    private int rockFrequency = 1;
+    
     /**
      * Constructor for objects of class AvoiderWorld.
      * 
@@ -25,9 +29,9 @@ public class AvoiderWorld extends World
         super(600, 400, 1, false); 
         
         // Initilize the music
-        bkgMusic = new GreenfootSound("sounds/urban-jungle-looping.mp3");
+        // bkgMusic = new GreenfootSound("sounds/urban-jungle-looping.mp3");
         // Music credit: http://soundimage.org/sci-fi/
-        bkgMusic.playLoop(); // Play the music
+        // bkgMusic.playLoop(); // Play the music
         
         setPaintOrder(Eye.class, Avatar.class, Enemy.class, Counter.class);
         prepare();
@@ -53,6 +57,7 @@ public class AvoiderWorld extends World
   public void act() {
       // Randomly add enimies to the world
       generateEnemies();
+      generatePowerItems();
       
       generateStars(-1);
       
@@ -68,6 +73,42 @@ public class AvoiderWorld extends World
           scoreBoard.setValue(scoreBoard.getValue() + 1);
           
       }
+  }
+  
+  private Actor createPowerItem(int type,int targetX, int targetY, int expireTime) {
+      System.out.println("power item berhasil dibuat" + targetX + targetY );
+      switch (type) {
+          case 0:
+            return new Cupcake(targetX, targetY, expireTime);
+          case 1:
+            return new Clover(targetX, targetY, expireTime);
+          case 2:
+            return new Rock(targetX, targetY, expireTime);
+ 
+      }
+
+      return null;
+      
+  }
+  
+  private void generatePowerItem( int type, int freq) {
+      if (Greenfoot.getRandomNumber(1000) < freq) {
+          int targetX = Greenfoot.getRandomNumber(getWidth() - 80) + 40;
+          int targetY = Greenfoot.getRandomNumber(getHeight() / 2) + 20;
+          Actor a = createPowerItem(type, targetX, targetY, 100);
+          if ( Greenfoot.getRandomNumber(100) < 50 ) {
+              addObject(a, getWidth() + 20, Greenfoot.getRandomNumber(getHeight() / 2) + 30);
+          } else {
+              addObject(a, -20, Greenfoot.getRandomNumber(getHeight() / 2) + 30);
+          }
+          
+      }
+  }
+  
+  private void generatePowerItems() {
+      generatePowerItem(0, cupcakeFrequency);
+      generatePowerItem(1, cloverFrequency);
+      generatePowerItem(2, rockFrequency);
   }
   
   private void generateStars(int yLoc) {
@@ -107,14 +148,17 @@ public class AvoiderWorld extends World
       int score = scoreBoard.getValue();
       
       if (score > nextLevel) {
-          enemySpawanRate += 2;
+          enemySpawanRate += 3;
           enemySpeed++;
-          nextLevel += 100;
+          cupcakeFrequency += 3;
+          cloverFrequency += 3;
+          rockFrequency += 2;
+          nextLevel += 50;
       }
   }
   
   public void endGame() {
-      bkgMusic.stop();
+      // bkgMusic.stop();
       AvoiderGameOverWorld go = new AvoiderGameOverWorld();
       Greenfoot.setWorld(go);
   }

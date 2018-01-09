@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Rock
+comment0.text=\n\ Write\ a\ description\ of\ class\ Rock\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=tX\ tY\ eT
+comment1.target=Rock(int,\ int,\ int)
+comment2.params=f
+comment2.target=double\ curveX(double)
+comment3.params=f
+comment3.target=double\ curveY(double)
+comment4.params=
+comment4.target=void\ checkHitAvatar()
+comment5.params=
+comment5.target=void\ act()
+comment5.text=\n\ Act\ -\ do\ whatever\ the\ Rock\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+numComments=6
