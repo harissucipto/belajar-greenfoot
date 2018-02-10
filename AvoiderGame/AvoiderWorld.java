@@ -158,9 +158,7 @@ public class AvoiderWorld extends World
   }
   
   public void endGame() {
-      // bkgMusic.stop();
-      AvoiderGameOverWorld go = new AvoiderGameOverWorld();
-      Greenfoot.setWorld(go);
+      
   }
 
     
